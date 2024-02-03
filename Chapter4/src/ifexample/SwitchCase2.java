@@ -3,7 +3,7 @@ package ifexample;
 public class SwitchCase2 {
 
 	public static void main(String[] args) {
-		
+		// switch 문
 		int month = 10;
 		int day;
 		

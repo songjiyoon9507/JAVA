@@ -3,6 +3,7 @@ package ifexample;
 public class SwitchCase {
 
 	public static void main(String[] args) {
+		// if-else 문
 		int rank1 = 2;
 		char medalColor1;
 		
@@ -19,7 +20,7 @@ public class SwitchCase {
 			medalColor1 = 'A';
 		}
 		System.out.println(rank1 + "등 메달의 색깔은 " + medalColor1 + "입니다.");
-		
+		// switch 문
 		int rank = 1;
 		char medalColor;
 		
