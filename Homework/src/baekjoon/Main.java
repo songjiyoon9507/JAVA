@@ -7,15 +7,12 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int H = sc.nextInt();
-		int M = sc.nextInt();
+		int n = sc.nextInt();
+		int sum = 0;
 		
-		if (H < 0 && (M - 45) < 0) {
-			System.out.printf("%d %d",23, 60  + (M - 45));
-		} else if (H > 0 && (M - 45) < 0) {
-			System.out.printf("%d %d", H-1, 60  + (M - 45));
-		} else {
-			System.out.printf("%d %d", H-1, M-1);
+		for(int i = 1 ; i <= n; i++) {
+			sum += i;
 		}
+		System.out.println(sum);
 	}
 }
