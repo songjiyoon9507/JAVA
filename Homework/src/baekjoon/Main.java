@@ -7,12 +7,18 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int n = sc.nextInt();
-		int sum = 0;
-		
-		for(int i = 1 ; i <= n; i++) {
-			sum += i;
+		int N = sc.nextInt();
+
+		String i = "int";
+		String l = "long";
+		int a = N/4;
+		String[] str = new String[a];
+				
+		for (int j = 0 ; j < str.length ; j++) {
+			str[j] += l;
+			System.out.printf("%s ",l);
 		}
-		System.out.println(sum);
+		System.out.printf("%s",i);
+
 	}
 }
