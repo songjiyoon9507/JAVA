@@ -1,8 +1,8 @@
-package baekjoon;
+package scanner.practice;
 
 import java.util.Scanner;
 
-public class Practice {
+public class HasNextIntScanner {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
@@ -13,4 +13,5 @@ public class Practice {
 			System.out.println(A+B);
 		}
 	}
+
 }

@@ -1,29 +1,25 @@
 package baekjoon;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
 		
-		StringTokenizer st;
-		StringBuilder sb = new StringBuilder();
+		int[] arr = new int[30];
 		
-		String str;
-		
-		while((str=br.readLine()) != null) {
-			st = new StringTokenizer(str, " ");
-			// 공백으로 분리 ," " 안 넣으면 출력 안됨
-			
-			int A = Integer.parseInt(st.nextToken());
-			int B = Integer.parseInt(st.nextToken());
-			
-			sb.append(A+B).append("\n");
+		// 30명 중 출석부 번호가 들어온 곳 1로 표시
+		for (int i = 0 ; i < 28 ; i++) {
+			int num = sc.nextInt();
+			arr[num-1] = 1;
 		}
-		System.out.print(sb);
+		
+		for (int i = 0 ; i < arr.length ; i++) {
+			if (arr[i] != 1) {
+				System.out.println(i+1);
+			}
+		}
 		
 	}
 }
