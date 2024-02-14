@@ -7,41 +7,19 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		
-		int M = sc.nextInt(); // 총 과목 수
+		String S = sc.next();
 		
-		// 다 double 로 입력 받아야 
+		int i = sc.nextInt();
 		
-		double[] arr = new double[M];
+		char[] arr = new char[S.length()];
 		
-		for(int i = 0 ; i < M ; i++) { // 점수 입력 받을 횟수
-			arr[i] = sc.nextDouble(); // 점수 입력 받아서 배열에 대입
-		}
-		
-		// 점수 중 최대값 구하기
-		
-		
-		double max = arr[0];
-		
-		for(int i = 0 ; i < arr.length ; i++) {
+		for(int x = 0 ; x < S.length() ; x++) {
+			arr[x] = S.charAt(x);
 			
-			if(arr[i] > max) {
-				max = arr[i];
+			if(i == x+1) {
+				System.out.println(arr[x]);
 			}
-			
 		}
-		
-		double sum = 0;
-		
-		double[] avgArr = new double[M];
-		
-		for (int i = 0 ; i < arr.length ; i++) {
-			
-			avgArr[i] = arr[i]/max*100;
-			
-			sum += avgArr[i];
-		}
-		
-		System.out.println(sum/M);
 		
 	}
 }
