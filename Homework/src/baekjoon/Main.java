@@ -7,18 +7,14 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 		
-		String S = sc.next();
+		int T = sc.nextInt();
 		
-		int i = sc.nextInt();
+		// T 길이 String 배열
+		String[] arr = new String[T];
 		
-		char[] arr = new char[S.length()];
-		
-		for(int x = 0 ; x < S.length() ; x++) {
-			arr[x] = S.charAt(x);
+		// first last 담아주기
+		for(int i = 0 ; i < arr.length ; i++) {
 			
-			if(i == x+1) {
-				System.out.println(arr[x]);
-			}
 		}
 		
 	}
