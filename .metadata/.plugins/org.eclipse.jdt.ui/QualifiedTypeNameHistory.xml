@@ -29,4 +29,5 @@
     <fullyQualifiedTypeName name="com.hw2.model.dto.Prisoner"/>
     <fullyQualifiedTypeName name="staticex.Student"/>
     <fullyQualifiedTypeName name="staticex.StudentTest"/>
+    <fullyQualifiedTypeName name="cooperation.Starbucks"/>
 </qualifiedTypeNameHistroy>
