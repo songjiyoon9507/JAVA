@@ -21,4 +21,12 @@
     <fullyQualifiedTypeName name="cooperation.Student"/>
     <fullyQualifiedTypeName name="edu.kh.objarray.practice.model.vo.Employee"/>
     <fullyQualifiedTypeName name="com.hw4.model.vo.Member"/>
+    <fullyQualifiedTypeName name="com.hw2.model.service.Company"/>
+    <fullyQualifiedTypeName name="com.hw2.model.dto.Person"/>
+    <fullyQualifiedTypeName name="com.hw2.model.dto.Employee"/>
+    <fullyQualifiedTypeName name="com.hw2.model.service.ManagementSystem"/>
+    <fullyQualifiedTypeName name="com.hw2.model.service.Prison"/>
+    <fullyQualifiedTypeName name="com.hw2.model.dto.Prisoner"/>
+    <fullyQualifiedTypeName name="staticex.Student"/>
+    <fullyQualifiedTypeName name="staticex.StudentTest"/>
 </qualifiedTypeNameHistroy>
