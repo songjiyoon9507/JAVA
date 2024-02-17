@@ -12,7 +12,7 @@ public class Person {
 	public void buyStarCoffee(StarCoffee sc, int money) {
 		String message = sc.make(money);
 		// 구매할 만큼의 돈 넣었으면
-		// 스벅 아메리카노 4000원 라떼 4300원 (Menu에 상수로 설정)
+		// 스벅 아메리카노 4000원 라떼 4300원 (Menu 에 상수로 설정)
 		if(message != null) {
 			this.money -= money;
 			// 돈 잘못 내면 커피 안줌
