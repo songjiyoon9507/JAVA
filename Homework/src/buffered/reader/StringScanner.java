@@ -18,5 +18,6 @@ public class StringScanner {
 			System.out.print(arr[i].charAt(0));
 			System.out.println(arr[i].charAt(arr[i].length()-1));
 		}
+		sc.close();
 	}
 }
