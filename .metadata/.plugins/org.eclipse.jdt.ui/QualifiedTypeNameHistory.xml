@@ -35,4 +35,6 @@
     <fullyQualifiedTypeName name="inheritance.VIPCustomer"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="abstractex.ComputerTest"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="gamelevel.AdvancedLevel"/>
 </qualifiedTypeNameHistroy>
