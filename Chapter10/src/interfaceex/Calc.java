@@ -14,4 +14,5 @@ public interface Calc {
 	int substract(int num1, int num2);
 	int times(int num1, int num2);
 	int divide(int num1, int num2);
+	int square(int num);
 }
