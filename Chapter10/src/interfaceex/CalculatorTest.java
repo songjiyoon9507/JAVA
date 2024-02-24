@@ -18,5 +18,10 @@ public class CalculatorTest {
 		System.out.println(calc.divide(num1, num2));
 		System.out.println(calc.square(num2));
 		calc.showInfo();
+		calc.description();
+		
+		int[] arr = {1, 2, 3, 4, 5};
+		// 인터페이스 이름 직접 참조 가능
+		System.out.println(Calc.total(arr));
 	}
 }
