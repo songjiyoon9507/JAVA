@@ -10,6 +10,7 @@ public class AccountView {
 	public int displayMenu() {
 		System.out.println("========== 원하시는 메뉴를 선택해주세요. ==========\n");
 		System.out.println("1. 계좌개설");
+		System.out.println("2. 입금");
 		
 		System.out.println("0. 프로그램 종료");
 		
@@ -33,6 +34,9 @@ public class AccountView {
 			
 			switch(menuNum) {
 			case 1 : am.makeAccount(); break;
+			case 2 : am.deposit(); break;
+			
+			
 			}
 			
 		} while(menuNum != 0);
