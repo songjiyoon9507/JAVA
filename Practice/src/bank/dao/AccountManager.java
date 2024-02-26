@@ -6,6 +6,7 @@ import java.util.Set;
 
 import bank.dto.Account;
 
+// 데이터가 저장된 파일/DB/외부 장치에 접근하는 역할
 public class AccountManager {
 	// 중복 계좌 안됨
 	private Set<Account> accountList;
