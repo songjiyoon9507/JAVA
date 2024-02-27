@@ -3,8 +3,6 @@ package customerManagement.view;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
 import customerManagement.model.dto.Customer;
 import customerManagement.model.service.CustomerListService;
 import customerManagement.model.service.CustomerListServiceImpl;
@@ -39,8 +37,8 @@ public class CustomerListView {
 				case 1 : customerList(); break;
 				case 2 : addCustomerList(); break;
 				case 3 : login(); break;
-				case 4 : updateList(); break;
-				
+				case 4 : updatePw(); break;
+				case 5 : deleteCustomerList(); break;
 				
 				case 0 : System.out.println("@@ 프로그램 종료 @@"); break;
 				default : System.out.println("### 메뉴에 작성된 번호만 입력해주세요. ###");
@@ -60,7 +58,7 @@ public class CustomerListView {
 		System.out.println("1. 고객 전체 조회");
 		System.out.println("2. 신규 고객 회원가입");
 		System.out.println("3. 로그인");
-		System.out.println("4. 고객 정보 수정");
+		System.out.println("4. 비밀번호 변경");
 		System.out.println("5. 고객 정보 삭제");
 		System.out.println("0. 프로그램 종료");
 		
@@ -167,31 +165,185 @@ public class CustomerListView {
 		
 		int index = service.checkPw2(memberId, memberPw);
 		
-		boolean login = service.login(index);
+		if(index == -1) {
+			System.out.println("로그인에 실패하였습니다. 비밀번호 불일치");
+		}
 		
-		if(login) {
-			System.out.println("\n로그인이 완료되었습니다.");
+		if (index != -1) {
+			boolean login = service.login(index);
 			
-		} else {
-			System.out.println("\n로그아웃 되었습니다.");
+			if(login) {
+				System.out.println("\n로그인이 완료되었습니다.");
+			}
+		}
+		
+//		boolean login = service.login(index);
+//		
+//		if(login) {
+//			System.out.println("\n로그인이 완료되었습니다.");
+//			
+//		} else {
+//			System.out.println("\n로그아웃 되었습니다.");
+//		}
+		
+	}
+	
+//	public void updateList() throws Exception {
+//		System.out.println("\n========== [고객 정보 수정] ==========\n");
+//		int index = 0;
+//		
+//		for(Customer list : service.customerListFullView()) {
+//			System.out.print("[" + index + "] ");
+//			System.out.println(list);
+//			index++;
+//		}
+//		
+//		System.out.print("수정할 정보의 인덱스 번호 입력 : ");
+//		int num = Integer.parseInt(br.readLine());
+//		
+//		String id = service.customerListFullView().get(num).getMemberId();
+//		
+//		int checkid = service.checkId(id);
+//		
+//		boolean flag = true;
+//		
+//		while(flag) {
+//			
+//			if (checkid == 0) { // 일치하는 아이디 있을 때
+//				System.out.print("해당 아이디의 비밀번호를 입력해주세요 : ");
+//				String pw = br.readLine();
+//				int checkPw = service.checkPw2(id, pw); // checkPw 에 해당 index 들어가있음
+//				
+//				if(checkPw == -1) {
+//					System.out.println("비밀번호가 일치하지 않습니다.");
+//					System.out.println("다시 입력해주세요.");
+//				} else {
+//					System.out.println("로그인 되었습니다.");
+//					flag = false;
+//				}
+//			}
+//		}
+//		
+//		int menuNum = -1;
+//		while (menuNum != 0) {
+//			
+//			System.out.println("\n========== [본인 정보 수정] ==========\n");
+//			
+////			System.out.println("1. 고객 비밀번호 수정");
+////			System.out.println("2. 고객 이름 수정");
+////			System.out.println("3. 고객 나이 수정");
+////			System.out.println("4. 고객 주소 수정");
+////			System.out.println("5. 고객 번호 수정");
+////			System.out.println("0. 수정 종료");
+//			
+//			
+//			switch (menuNum) {
+////			case 1 : updatePw(); break;
+////			case 2 : updateName(); break;
+////			case 3 : updateAge(); break;
+////			case 4 : updateAddress(); break;
+////			case 5 : updateNumber(); break;
+//			case 0 : System.out.println("수정 종료");
+//			}
+//		
+//		
+//		}
+//		
+//		
+////		System.out.print("수정할 정보의 아이디 입력 : ");
+////		String memberId = br.readLine();
+////		
+////		int num = service.checkId(memberId);
+////		
+////		if(num == 0) {
+////			System.out.print("비밀 번호 입력 : ");
+////			String memberPw = br.readLine();
+////			int index = service.checkPw2(memberId, memberPw);
+////
+////		}
+//	}
+	
+	/**
+	 * 비밀번호 변경
+	 */
+	public void updatePw() throws Exception {
+		
+		System.out.println("\n========== [비밀번호 변경] ==========\n");
+		
+		int index = 0;
+		
+		for(Customer list : service.customerListFullView()) {
+			System.out.print("[" + index + "] ");
+			System.out.println(list);
+			index++;
+		}
+		
+		System.out.print("비밀 번호 수정할 고객 인덱스 번호 입력 : ");
+		int num = Integer.parseInt(br.readLine());
+		
+		String id = service.customerListFullView().get(num).getMemberId();
+		
+		int checkid = service.checkId(id);
+		
+		boolean flag = true;
+		
+		String updatePw = "";
+		
+		
+		while(flag) {
+			
+			if (checkid == 0) { // 일치하는 아이디 있을 때
+				System.out.print("해당 아이디의 비밀번호를 입력해주세요 : ");
+				String pw = br.readLine();
+				int checkPw = service.checkPw2(id, pw); // checkPw 에 해당 index 들어가있음
+				
+				if(checkPw == -1) {
+					System.out.println("비밀번호가 일치하지 않습니다.");
+					System.out.println("다시 입력해주세요.");
+				} else {
+					// 일치했으면 수정할 비밀번호 받기
+					System.out.print("수정할 비밀번호를 입력해주세요. : ");
+					updatePw = br.readLine();
+					flag = false;
+				}
+			}
+		}
+		
+		boolean savePw = service.updatePw(checkid, updatePw);
+		
+		if(savePw) {
+			System.out.println("비밀번호 변경 완료");
 		}
 		
 	}
 	
-	public void updateList() throws Exception {
-		System.out.println("\n========== [고객 정보 수정] ==========\n");
+	public void deleteCustomerList() throws Exception {
+		System.out.println("\n========== [고객 정보 삭제] ==========\n");
 		
-		System.out.print("수정할 정보의 아이디 입력 : ");
-		String memberId = br.readLine();
+		int index = 0;
 		
-		int num = service.checkId(memberId);
-		
-		if(num == 0) {
-			System.out.print("비밀 번호 입력 : ");
-			String memberPw = br.readLine();
-			int index = service.checkPw2(memberId, memberPw);
-
+		for(Customer list : service.customerListFullView()) {
+			System.out.print("[" + index + "] ");
+			System.out.println(list);
+			index++;
 		}
+		
+		System.out.print("삭제할 고객 인덱스 번호 입력 : ");
+		int num = Integer.parseInt(br.readLine());
+		
+		if (num >= 0 && service.customerListFullView().size() > num) {
+			
+			System.out.print("정말 삭제하시겠습니까? (Y/N) : ");
+			char answer = br.readLine().toUpperCase().charAt(0);
+			
+			if(answer == 'Y') {
+				String name = service.deleteCustomerList(num);
+				System.out.println(name + "님의 정보가 삭제되었습니다.");
+			} else {
+				System.out.println("삭제가 취소되었습니다.");
+			}
+		}
+		
 	}
 	
 }

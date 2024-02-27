@@ -20,4 +20,8 @@ public interface CustomerListDAO {
 	boolean login(int index) throws Exception;
 	
 	List<Customer> loginMember();
+	
+	boolean updatePw(int checkid, String updatePw) throws Exception;
+
+	String deleteCustomerList(int num) throws Exception;
 }

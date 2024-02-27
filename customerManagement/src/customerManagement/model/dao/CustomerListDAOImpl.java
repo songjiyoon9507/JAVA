@@ -94,10 +94,10 @@ public class CustomerListDAOImpl implements CustomerListDAO {
 	@Override
 	public int checkPw2(String memberId, String memberPw) {
 		
-		int index = 0;
+		int index = -1;
 		
 		for(int i = 0 ; i < customerList.size() ; i ++) {
-			if(customerList.get(i).getMemberId().equals(memberId)) {
+			if(customerList.get(i).getMemberPw().equals(memberPw)) {
 				index = i;
 				break;
 			}
@@ -113,7 +113,7 @@ public class CustomerListDAOImpl implements CustomerListDAO {
 		
 		saveFile();
 		
-		return login;
+		return true;
 	}
 
 	@Override
@@ -127,7 +127,21 @@ public class CustomerListDAOImpl implements CustomerListDAO {
 		return loginMember;
 	}
 
-	
+	@Override
+	public boolean updatePw(int checkid, String updatePw) throws Exception {
+
+		customerList.get(checkid).setMemberPw(updatePw);
+		saveFile();
+		return true;
+
+	}
+
+	@Override
+	public String deleteCustomerList(int num) throws Exception {
+		String name = customerList.remove(num).getMemberName();
+		saveFile();
+		return name;
+	}
 	
 
 

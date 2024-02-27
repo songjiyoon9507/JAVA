@@ -21,4 +21,8 @@ public interface CustomerListService {
 	
 	List<Customer> loginMember();
 
+	boolean updatePw(int checkid, String updatePw) throws Exception;
+
+	String deleteCustomerList(int num) throws Exception;
+
 }

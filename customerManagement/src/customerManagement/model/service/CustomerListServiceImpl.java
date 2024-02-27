@@ -82,8 +82,18 @@ public class CustomerListServiceImpl implements CustomerListService{
 	public List<Customer> loginMember() {
 		return dao.loginMember();
 	}
-	
 
+	@Override
+	public boolean updatePw(int checkid, String updatePw) throws Exception {
+		return dao.updatePw(checkid, updatePw);
+	}
+
+	@Override
+	public String deleteCustomerList(int num) throws Exception {
+		return dao.deleteCustomerList(num);
+	}
+	
+	
 	
 //	public void addCustomerList(String memberId, String memberPw, String memberName, int memberAge, String address, String phoneNumber) {
 //		
