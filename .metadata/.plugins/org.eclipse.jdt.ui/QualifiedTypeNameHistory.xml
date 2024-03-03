@@ -25,10 +25,7 @@
     <fullyQualifiedTypeName name="bank.dao.AccountManager"/>
     <fullyQualifiedTypeName name="bank.view.AccountView"/>
     <fullyQualifiedTypeName name="bank.dto.Account"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="toyproject.mfp.model.dto.MFP"/>
     <fullyQualifiedTypeName name="toyproject.mfp.model.dao.MFPDAO"/>
     <fullyQualifiedTypeName name="toyproject.mfp.model.dao.MFPDAOImpl"/>
@@ -60,4 +57,7 @@
     <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
     <fullyQualifiedTypeName name="bankRecord.model.dto.BankRecord"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 </qualifiedTypeNameHistroy>

@@ -1,42 +1,20 @@
 package baekjoon;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		Scanner sc = new Scanner(System.in);
 		
-		int king = 1;
-		int queen = 1;
-		int rook = 2;
-		int bishop = 2;
-		int knight = 2;
-		int pawn = 8;
+		String str = sc.next();
 		
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-		king = king - Integer.parseInt(st.nextToken());
-		queen = queen - Integer.parseInt(st.nextToken());
-		rook = rook - Integer.parseInt(st.nextToken());
-		bishop = bishop - Integer.parseInt(st.nextToken());
-		knight = knight - Integer.parseInt(st.nextToken());
-		pawn = pawn - Integer.parseInt(st.nextToken());
+		StringBuilder sb = new StringBuilder(str);
 		
-		bw.write(king + " ");
-		bw.write(queen + " ");
-		bw.write(rook + " ");
-		bw.write(bishop + " ");
-		bw.write(knight + " ");
-		bw.write(pawn + " ");
-		
-		br.close();
-		bw.flush();
-		bw.close();
+		if(str.equals(sb.reverse().toString())) {
+			System.out.println(1);
+		} else {
+			System.out.println(0);
+		}
 	}
 }
