@@ -9,12 +9,37 @@ public class Main {
 		
 		String str = sc.next();
 		
-		StringBuilder sb = new StringBuilder(str);
+		int answer = str.length();
 		
-		if(str.equals(sb.reverse().toString())) {
-			System.out.println(1);
-		} else {
-			System.out.println(0);
+		for(int i = 0 ; i < str.length() ; i++) {
+			
+			char ch = str.charAt(i);
+			
+			if(ch == 'c' && str.charAt(i+1) == '=') {
+				answer -= 1;
+			}
+			if(ch == 'c' && str.charAt(i+1) == '-') {
+				answer -= 1;
+			}
+			if(ch == 'd' && str.charAt(i+1) == 'z' && str.charAt(i+2) == '=') {
+				answer -= 2;
+			}
+			if(ch == 'd' && str.charAt(i+1) == '-') {
+				answer -= 1;
+			}
+			if(ch == 'l' && str.charAt(i+1) == 'j') {
+				answer -= 1;
+			}
+			if(ch == 'n' && str.charAt(i+1) == 'j') {
+				answer -= 1;
+			}
+			if(ch == 's' && str.charAt(i+1) == '=') {
+				answer -= 1;
+			}
+
+			
 		}
+
+		System.out.println(answer);
 	}
 }
