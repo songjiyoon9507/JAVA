@@ -7,39 +7,19 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		String str = sc.next();
+		int N = sc.nextInt();
 		
-		int answer = str.length();
+		int count = N;
 		
-		for(int i = 0 ; i < str.length() ; i++) {
+		for(int i = 0 ; i < N ; i++) {
+			String str = sc.next();
 			
-			char ch = str.charAt(i);
-			
-			if(ch == 'c' && str.charAt(i+1) == '=') {
-				answer -= 1;
+			for(int j = 0 ; j < str.length() ; j++) {
+				if (j < str.length()-1 && str.charAt(j) != str.charAt(j+1)) {
+//					if(str.charAt(j) == )
+				}
 			}
-			if(ch == 'c' && str.charAt(i+1) == '-') {
-				answer -= 1;
-			}
-			if(ch == 'd' && str.charAt(i+1) == 'z' && str.charAt(i+2) == '=') {
-				answer -= 2;
-			}
-			if(ch == 'd' && str.charAt(i+1) == '-') {
-				answer -= 1;
-			}
-			if(ch == 'l' && str.charAt(i+1) == 'j') {
-				answer -= 1;
-			}
-			if(ch == 'n' && str.charAt(i+1) == 'j') {
-				answer -= 1;
-			}
-			if(ch == 's' && str.charAt(i+1) == '=') {
-				answer -= 1;
-			}
-
-			
 		}
-
-		System.out.println(answer);
+		
 	}
 }
