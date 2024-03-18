@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!-- properties 라는 태그가 있음 -->
+	<!-- properties 형식
+	
+	<entry key="key">원하는 내용</entry>
+	
+	이렇게 작성 외부에서 key 부르면 원하는 내용이라는 value가 옴
+	-->
+	
+	<comment>test.xml file!!!!!</comment>
+	
+	<!-- properties 이용해서 xml 파일을 만드는 거 -->
+	<!-- 빨간 줄 신경 안 써도 됨 -->
+</properties>
+<!-- properties.storeToXML 안하면 안에 내용 없이 .xml 파일만 생성됨-->
