@@ -11,7 +11,17 @@ public class Bus {
 	private int remainSeat; // 남은 좌석 개수
 	private List<BusSeat> busSeatList; // 좌석 목록
 	
+	private List<Bus> busList; // 버스 번호
+	
 	public Bus() {}
+	
+	public Bus(int busNo, String departures, String arrivals, String departureTime, String arrivalTime) {
+		this.busNo = busNo;
+		this.departures = departures;
+		this.arrivals = arrivals;
+		this.departureTime = departureTime;
+		this.arrivalTime = arrivalTime;
+	}
 
 	public int getBusNo() {
 		return busNo;
@@ -67,6 +77,14 @@ public class Bus {
 
 	public void setBusSeatList(List<BusSeat> busSeatList) {
 		this.busSeatList = busSeatList;
+	}
+
+	public List<Bus> getBusList() {
+		return busList;
+	}
+
+	public void setBusList(List<Bus> busList) {
+		this.busList = busList;
 	}
 	
 }

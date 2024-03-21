@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>query.xml file</comment>
+	<comment>query.xml file</comment>
+	
+	<!-- 전화번호 중복 체크 -->
+	<entry key="phoneNumCheck">
+		SELECT COUNT(*)
+		FROM RESERVE_PERSON
+		WHERE PHONE = ?
+	</entry>
+	
+	<!-- 회원가입 -->
+	<entry key="signUp">
+		INSERT INTO RESERVE_PERSON(NAME, PHONE)
+		VALUES(?, ?)
+	</entry>
+	
+	<!-- 로그인 -->
+	<entry key="login">
+		SELECT NAME, PHONE, BUS_DEPARTURES, BUS_ARRIVALS,
+		BUS_DEPARTURE_TIME, BUS_NO, SEAT_NO
+		FROM RESERVE_PERSON
+		WHERE PHONE = ?
+	</entry>
+	
+	<!-- 버스 목록 조회 -->
+	<entry key="searchAllBus">
+		SELECT BUS_NO, BUS_DEPARTURES, BUS_ARRIVALS,
+		BUS_DEPARTURE_TIME, BUS_ARRIVAL_TIME
+		FROM BUS
+		ORDER BY 1
+	</entry>
+	
+	<!-- 버스별 남은 좌석 조회 -->
+	<entry key="remainSeat">
+		SELECT BUS_NO, COUNT(*)
+		FROM BUS_SEAT
+		WHERE SEAT_RESERVATION = 'N'
+		GROUP BY BUS_NO
+		ORDER BY 1
+	</entry>
 </properties>

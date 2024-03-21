@@ -3,8 +3,8 @@
 <properties>
 	<comment>driver.xml file</comment>
 	
-	<entry key="driver">oracle.jdbc.Driver.OracleDriver</entry>
-	<entry key="url">jdbc:oracle:thin:@localhost:1521:XE0</entry>
+	<entry key="driver">oracle.jdbc.driver.OracleDriver</entry>
+	<entry key="url">jdbc:oracle:thin:@localhost:1521:XE</entry>
 	<entry key="user">bus</entry>
 	<entry key="password">bus</entry>
 </properties>

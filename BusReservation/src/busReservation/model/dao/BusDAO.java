@@ -1,10 +1,20 @@
 package busReservation.model.dao;
 
 import java.io.FileInputStream;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+
+import busReservation.model.dto.Bus;
+import busReservation.model.dto.ReservePerson;
+
+import static busReservation.common.JDBCTemplate.*;
 
 public class BusDAO {
 	
@@ -20,6 +30,144 @@ public class BusDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/** 전화번호 중복 확인
+	 * @param conn
+	 * @param phone
+	 * @return result
+	 * @throws Exception
+	 */
+	public int phoneNumCheck(Connection conn, String phone) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("phoneNumCheck");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, phone);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) result = rs.getInt(1);
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 회원가입
+	 * @param conn
+	 * @param person
+	 * @return result
+	 */
+	public int signUp(Connection conn, ReservePerson person) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("signUp");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, person.getName());
+			pstmt.setString(2, person.getPhoneNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 로그인
+	 * @param conn
+	 * @param phone
+	 * @return person
+	 * @throws Exception
+	 */
+	public ReservePerson login(Connection conn, String phone) throws Exception {
+		ReservePerson person = null;
+		
+		try {
+			String sql = prop.getProperty("login");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, phone);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				person = new ReservePerson();
+				
+				person.setName(rs.getString(1));
+				person.setPhoneNum(rs.getString(2));
+				person.setDepartures(rs.getString(3));
+				person.setArrivals(rs.getString(4));
+				person.setDepartureTime(rs.getString(5));
+				person.setBusNo(rs.getInt(6));
+				person.setReserveSeatNo(rs.getInt(7));
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return person;
+	}
+
+	/** 버스 목록 조회
+	 * @param conn
+	 * @return busList
+	 * @throws Exception
+	 */
+	public List<Bus> searchAllBus(Connection conn) throws Exception {
+		List<Bus> busList = new ArrayList<Bus>();
+		
+		try {
+			String sql = prop.getProperty("searchAllBus");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				busList.add(new Bus(rs.getInt(1), rs.getString(2),
+						rs.getString(3), rs.getString(4), rs.getString(5)));
+			}
+			
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return busList;
+	}
+
+	/** 버스 남은 좌석
+	 * @param conn
+	 * @return leftSeatList
+	 */
+	public Map<Integer, Integer> leftSeat(Connection conn) throws Exception {
+		Map<Integer, Integer> leftSeatList = new  LinkedHashMap<Integer, Integer>();
+		
+		try {
+			String sql = prop.getProperty("remainSeat");
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				leftSeatList.put(rs.getInt(1), rs.getInt(2));
+			}
+			
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return leftSeatList;
 	}
 	
 	
