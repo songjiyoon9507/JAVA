@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import static busReservation.common.JDBCTemplate.*;
+
+import busReservation.common.Session;
 import busReservation.model.dao.BusDAO;
 import busReservation.model.dto.Bus;
 import busReservation.model.dto.ReservePerson;
@@ -88,13 +90,36 @@ public class BusService {
 		return leftSeatList;
 	}
 
-	/** 
+	/** 버스 번호 받아서 남은 좌석 번호 돌려주는 메서드
 	 * @param busNo
-	 * @return
+	 * @return remainSeatList
 	 */
-	public List<Integer> remainSeat(int busNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Integer> remainSeat(int busNo) throws Exception {
+		Connection conn = getConnection();
+		
+		List<Integer> remainSeatList = dao.remainSeatList(conn, busNo);
+
+		close(conn);
+		
+		return remainSeatList;
+	}
+
+	/** 버스 예약
+	 * @param busNo
+	 * @param seatNo
+	 * @return result
+	 */
+	public int reserveBus(int busNo, int seatNo) throws Exception {
+		Connection conn = getConnection();
+		int personResult= 0;
+		
+		int busResult = dao.reserveBus(conn, busNo, seatNo);
+		
+		if(busResult > 0) {
+			personResult = dao.updatePerson(conn, busNo, seatNo, Session.loginPerson.getPhoneNum());
+		}
+		
+		return personResult;
 	}
 
 }

@@ -154,7 +154,7 @@ public class BusDAO {
 		Map<Integer, Integer> leftSeatList = new  LinkedHashMap<Integer, Integer>();
 		
 		try {
-			String sql = prop.getProperty("remainSeat");
+			String sql = prop.getProperty("leftSeat");
 			
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
@@ -168,6 +168,87 @@ public class BusDAO {
 			close(stmt);
 		}
 		return leftSeatList;
+	}
+
+	/** 남은 좌석 번호 조회
+	 * @param conn
+	 * @param busNo
+	 * @return remainSeatList
+	 * @throws Exception
+	 */
+	public List<Integer> remainSeatList(Connection conn, int busNo) throws Exception {
+		List<Integer> remainSeatList = new ArrayList<Integer>();
+		
+		try {
+			String sql = prop.getProperty("remainSeat");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, busNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				remainSeatList.add(rs.getInt(1));
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return remainSeatList;
+	}
+
+	/** 버스 예약
+	 * @param conn
+	 * @param busNo
+	 * @param seatNo
+	 * @return result
+	 */
+	public int reserveBus(Connection conn, int busNo, int seatNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("reserveBus");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, busNo);
+			pstmt.setInt(2, seatNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 예약한 사람 정보 저장
+	 * @param conn
+	 * @param busNo
+	 * @param seatNo
+	 * @param phone 
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updatePerson(Connection conn, int busNo, int seatNo, String phone) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updatePerson");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, busNo);
+			pstmt.setInt(2, busNo);
+			pstmt.setInt(3, busNo);
+			pstmt.setInt(4, busNo);
+			pstmt.setInt(5, seatNo);
+			pstmt.setString(6, phone);
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 	
 	

@@ -191,14 +191,57 @@ public class BusView {
 	 * 버스 예약
 	 */
 	public void reserveBus() {
+		
+		int busNo = 0;
+		int seatNo = 0;
+		
 		try {
 			
 			System.out.print("예약할 버스 번호 입력 : ");
-			int busNo = sc.nextInt();
+			busNo = sc.nextInt();
 			sc.nextLine();
 			
-			// 남은 좌석 번호 출력
-			List<Integer> remain = service.remainSeat(busNo);
+			List<Bus> busList = service.searchAllBus();
+			
+			boolean flag = false;
+			
+			for(int i = 0 ; i < busList.size() ; i++) {
+				if(busList.get(i).getBusNo() == busNo) {
+					flag = true;
+				}
+				
+			}
+			
+			if(flag) {
+				
+				// 남은 좌석 번호 출력
+				List<Integer> remain = service.remainSeat(busNo);
+				
+				System.out.println("\n===== [ 예약 가능 좌석 ] =====\n");
+				
+				for(Integer list : remain) {
+					System.out.println(list);
+				}
+				
+				System.out.print("예약할 좌석 번호 : ");
+				seatNo = sc.nextInt();
+				sc.nextLine();
+				
+				// 좌석 번호 입력 받아서 로그인 DB에 예약자 정보 저장
+				// insert 반환형이 int
+				// + 버스 좌석 예약 현황 Y 변경
+				int result = service.reserveBus(busNo, seatNo);
+				
+				if(result > 0) {
+					System.out.println("\n[[[ 버스 예약 완료 ]]]\n");
+				} else {
+					System.out.println("\n### 버스 예약 실패 ###\n");
+				}
+				
+			} else {
+				System.out.println("\n### 일치하는 버스 번호가 존재하지 않습니다. ###\n");
+				System.out.println("##### 버스 조회 후 다시 입력해주세요. #####");
+			}
 			
 		} catch(Exception e) {
 			System.out.println("\n### [ 버스 예약 중 예외 발생 ] ###\n");

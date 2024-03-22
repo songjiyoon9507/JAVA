@@ -50,14 +50,14 @@
     <fullyQualifiedTypeName name="busReservation.view.BusView"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="busReservation.common.JDBCTemplate"/>
-    <fullyQualifiedTypeName name="busReservation.common.Session"/>
-    <fullyQualifiedTypeName name="busReservation.model.dto.ReservePerson"/>
     <fullyQualifiedTypeName name="busReservation.model.dto.Bus"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.Map.Entry"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="busReservation.model.dto.ReservePerson"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="busReservation.common.Session"/>
 </qualifiedTypeNameHistroy>
