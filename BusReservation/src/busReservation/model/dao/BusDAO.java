@@ -345,9 +345,13 @@ public class BusDAO {
 		try {
 			String sql = prop.getProperty("removePerson");
 			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, phoneNum);
+			
+			result = pstmt.executeUpdate();
 			
 		} finally {
-			
+			close(pstmt);
 		}
 		
 		return result;

@@ -332,7 +332,7 @@ public class BusView {
 			char ch = sc.nextLine().toUpperCase().charAt(0);
 			
 			if(ch == 'Y') {
-				System.out.println("전화번호 입력 : ");
+				System.out.print("전화번호 입력 : ");
 				String phone = sc.nextLine();
 				
 				// 전화번호 일치할 때 삭제

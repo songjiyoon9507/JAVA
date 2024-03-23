@@ -98,4 +98,9 @@
 		SEAT_NO = NULL
 		WHERE PHONE = ?
 	</entry>
+	
+	<entry key="removePerson">
+		DELETE FROM RESERVE_PERSON
+		WHERE PHONE = ?
+	</entry>
 </properties>
