@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import busReservation.common.Session;
 import busReservation.model.dto.Bus;
 import busReservation.model.dto.ReservePerson;
 
@@ -197,6 +198,39 @@ public class BusDAO {
 		}
 		return remainSeatList;
 	}
+	
+	/** 예약한 정보 있는지 조회
+	 * @param conn
+	 * @param phoneNum
+	 * @return person
+	 * @throws Exception
+	 */
+	public ReservePerson reserveInfo(Connection conn, String phoneNum) throws Exception {
+		ReservePerson person = new ReservePerson();
+		
+		try {
+			String sql = prop.getProperty("reserveInfo");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, phoneNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				person.setDepartures(rs.getString(1));
+				person.setArrivals(rs.getString(2));
+				person.setDepartureTime(rs.getString(3));
+				person.setBusNo(rs.getInt(4));
+				person.setReserveSeatNo(rs.getInt(5));
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return person;
+	}
 
 	/** 버스 예약
 	 * @param conn
@@ -251,6 +285,75 @@ public class BusDAO {
 		return result;
 	}
 	
+	/** 버스 좌석 예약 정보 변경
+	 * @param conn
+	 * @param busNo
+	 * @param seatNo
+	 * @return result
+	 */
+	public int busReserve(Connection conn, int busNo, int seatNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("busReserve");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, busNo);
+			pstmt.setInt(2, seatNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	/** 예약 정보 삭제
+	 * @param conn
+	 * @param phoneNum
+	 * @return result
+	 * @throws Exception
+	 */
+	public int deleteReserve(Connection conn, String phoneNum) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("deleteReserve");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, phoneNum);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	/** 회원 삭제
+	 * @param conn
+	 * @param phoneNum
+	 * @return result
+	 */
+	public int removePerson(Connection conn, String phoneNum) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("removePerson");
+			
+			
+		} finally {
+			
+		}
+		
+		return result;
+	}
+
+
 	
 	
 }

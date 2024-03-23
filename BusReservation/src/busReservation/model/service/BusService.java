@@ -90,6 +90,20 @@ public class BusService {
 		return leftSeatList;
 	}
 
+	/** 예약 정보 있는지 조회
+	 * @param phoneNum
+	 * @return person
+	 */
+	public ReservePerson reserveInfo(String phoneNum) throws Exception {
+		Connection conn = getConnection();
+		
+		ReservePerson person = dao.reserveInfo(conn, phoneNum);
+		
+		close(conn);
+		
+		return person;
+	}
+	
 	/** 버스 번호 받아서 남은 좌석 번호 돌려주는 메서드
 	 * @param busNo
 	 * @return remainSeatList
@@ -117,9 +131,54 @@ public class BusService {
 		
 		if(busResult > 0) {
 			personResult = dao.updatePerson(conn, busNo, seatNo, Session.loginPerson.getPhoneNum());
-		}
+			commit(conn);
+		} else rollback(conn);
+		
+		close(conn);
 		
 		return personResult;
 	}
+
+	/** 예약 취소
+	 * @param phoneNum
+	 * @param SeatNo 
+	 * @param busNo 
+	 * @return result
+	 * @throws Exception
+	 */
+	public int deleteReserve(String phoneNum, int busNo, int seatNo) throws Exception {
+		Connection conn = getConnection();
+		int result = 0;
+		
+		int busReserve = dao.busReserve(conn, busNo, seatNo);
+		
+		if (busReserve > 0) {
+			result = dao.deleteReserve(conn, phoneNum);
+			if(result > 0) {
+				commit(conn);
+			} else rollback(conn);
+		} else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 회원 삭제
+	 * @param phoneNum
+	 * @return result
+	 */
+	public int removePerson(String phoneNum) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.removePerson(conn, phoneNum);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		return result;
+	}
+
+
 
 }

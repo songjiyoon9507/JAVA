@@ -49,20 +49,19 @@
 		AND BUS_NO = ?
 	</entry>
 	
+	<entry key="reserveInfo">
+		SELECT BUS_DEPARTURES, BUS_ARRIVALS, BUS_DEPARTURE_TIME, BUS_NO, SEAT_NO
+		FROM RESERVE_PERSON
+		WHERE PHONE = ?
+	</entry>
+	
 	<!-- 버스 예약 UPDATE -->
-	<entry key="resereveBus">
+	<entry key="reserveBus">
 		UPDATE BUS_SEAT SET
 		SEAT_RESERVATION = 'Y'
 		WHERE SEAT_RESERVATION = 'N'
 		AND BUS_NO = ?
 		AND SEAT_NO = ?
-	</entry>
-	
-	<!-- 버스 번호 받아서 출발지, 도착지, 출발시간 돌려받기 -->
-	<entry key="busInfo">
-		SELECT BUS_DEPARTURES, BUS_ARRIVALS, BUS_DEPARTURE_TIME
-		FROM BUS
-		WHERE BUS_NO = ?
 	</entry>
 	
 	<!-- 버스 예약하면 사람 예약 정보 UPDATE -->
@@ -80,5 +79,23 @@
 		R.BUS_NO = ?,
 		R.SEAT_NO = ?
 		WHERE R.PHONE = ? 
+	</entry>
+	
+	<entry key="busReserve">
+		UPDATE BUS_SEAT SET
+		SEAT_RESERVATION = 'N'
+		WHERE SEAT_RESERVATION = 'Y'
+		AND BUS_NO = ?
+		AND SEAT_NO = ?
+	</entry>
+	
+	<entry key="deleteReserve">
+		UPDATE RESERVE_PERSON SET
+		BUS_DEPARTURES = NULL,
+		BUS_ARRIVALS = NULL,
+		BUS_DEPARTURE_TIME = NULL,
+		BUS_NO = NULL,
+		SEAT_NO = NULL
+		WHERE PHONE = ?
 	</entry>
 </properties>
