@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  
+  <!--
+  	web.xml (배포 서술자)
+  	Server 가 켜지자 마자(Start) 제일 처음 읽는 문서
+  	main 페이지가 뭐냐
+   -->
+  
   <display-name>ServletHome</display-name>
+  
+  <!-- 메인페이지로 사용할 파일명 목록 -->
+  <!-- 메인페이지로 사용할 걸 만들어줘야함
+  어디에 만들어야하냐 html 은 resource 자원들은 webapp 폴더에 만들어줘야함 -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
