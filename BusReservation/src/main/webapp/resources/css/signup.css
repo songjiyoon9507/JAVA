@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Ownglyph_meetme-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Ownglyph_meetme-Rg';
+}
+
+body {
+    display: flex;
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+main {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 500px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+p {
+    font-size: 30px;
+}
+
+input {
+    height: 30px;
+    width: 120px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+button {
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: #cff1fc;
+}
+
+span {
+    font-size: 30px;
+}
+
+.login {
+    justify-content: space-around;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

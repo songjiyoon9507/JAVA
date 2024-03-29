@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+/* font 폰트 사이트 눈누 */
+
+@font-face {
+    font-family: 'Ownglyph_meetme-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 위에 가져온 폰트 적용 */
+* {
+    font-family: 'Ownglyph_meetme-Rg';
+}
+
+body {
+    
+    display: flex;
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+main {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 500px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    font-size: 30px;
+}
+
+input {
+    height: 30px;
+    width: 120px;
+    margin-left: 10px;
+    border-radius: 10px;
+    font-size: 25px;
+}
+
+button {
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+span {
+    font-size: 30px;
+}
+
+.login {
+    justify-content: space-around;
+}
+
+.login-btn {
+    background-color: #cff1fc;
+}
+
+.signup {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #dafad9;
+}
+
+a {
+    /* a태그 아래 언더라인 없애는 거 */
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    display: flex;
+}
+
+.container span {
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.reserve {
+    background-color: #cff1fc;
+    margin-right: 10px;
+}
+
+.logout {
+    background-color: #faedfa;
+    margin-left: 10px;
+}
+
+.seat {
+    display: flex;
+    flex-wrap: wrap;
+    /* 못 빠져나가게 막아줌 */
+    height: 60%;
+}
+
+.seat a {
+    font-size: 30px;
+}
+
+.seatNo {
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    padding: 0 10px;
+}
+
+.back {
+    font-size: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #faedfa;
+}

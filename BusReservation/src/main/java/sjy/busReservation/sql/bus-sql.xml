@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<!-- 버스 전체 조회 -->
+<!-- 	<entry key="selectAll">
+		SELECT BUS_NO, BUS_DEPARTURES, BUS_ARRIVALS,
+		BUS_DEPARTURE_TIME, BUS_ARRIVAL_TIME
+		FROM BUS
+		ORDER BY 1
+	</entry>
+	
+	버스별 남은 좌석 조회
+	<entry key="leftSeat">
+		SELECT BUS_NO, COUNT(*)
+		FROM BUS_SEAT
+		WHERE SEAT_RESERVATION = 'N'
+		GROUP BY BUS_NO
+		ORDER BY 1
+	</entry> -->
+	
+	<!-- 버스 전체 조회 버스별 남은 좌석 개수까지 -->
+	<entry key="selectAll">
+		SELECT BUS_NO, BUS_DEPARTURES, BUS_ARRIVALS,
+		BUS_DEPARTURE_TIME, BUS_ARRIVAL_TIME, COUNT(*)
+		FROM BUS
+		JOIN BUS_SEAT USING(BUS_NO)
+		WHERE SEAT_RESERVATION = 'N'
+		GROUP BY BUS_NO, BUS_DEPARTURES, BUS_ARRIVALS,
+		BUS_DEPARTURE_TIME, BUS_ARRIVAL_TIME
+		ORDER BY 1
+	</entry>
+	
+	<!-- 입력 받은 버스 번호가 존재하는지 조회 -->
+	<entry key="select">
+		SELECT COUNT(*)
+		FROM BUS
+		WHERE BUS_NO = ?
+	</entry>
+</properties>
