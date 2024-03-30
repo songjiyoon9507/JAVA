@@ -79,5 +79,44 @@
         서버로 보냄 -->
         <!-- type="button" 이렇게 쓰면 서버로 제출 X 그냥 버튼 모양 -->
     </form>
+    
+    <hr>
+    
+    <h1>POST 방식 요청 및 응답</h1>
+    <pre>
+    	GET 방식과는 다르게 전달되는 값을 주소가 아닌
+    	HTTP BODY 에 담아서 전달하는 방식
+    	
+    	[장점]
+    	- 길이 제한 X
+    	- 데이터를 숨겨서 전달(보안성 향상)
+    	
+    	요청 주소만 뜨고 담겨진 데이터들은 노출이 안됨
+    	
+    	[단점]
+    	- 캐싱 불가능 (북마크 하면 원하는 페이지를 볼 수 없음)
+    	- 서버에서 추가적인 문자 인코딩 처리 필요 (tomcat 10 부터 해당 문제 해결됨)
+    </pre>
+    
+    <h3>회원가입</h3>
+    
+    <!-- 사용자에게 입력 받아서 넘겨줄 것 -->
+    <!-- 사용자에게 입력 받아서 보내려면 form 태그 있어야함 -->
+    <form action="/signUp" method="post">
+    <!-- 어디에 보낼지 action 에 작성 -->
+    <!-- method 는 작성 안하면 get -->
+    	아이디 : <input type="text" name="inputId" required> <br>
+    	<!-- required input 태그에 값을 반드시 작성해야하는 속성 -->
+    	비밀번호 : <input type="password" name="inputPw" required> <br>
+    	비밀번호 확인 : <input type="password" required>
+    	<!-- 수집 안할 거라서 name 값 안 넣음 -->
+    	이름 : <input name="inputName" required> <br>
+    	
+    	자기소개(선택) <br>
+    	<textarea name="intro" rows="5" cols="50"></textarea>
+    	<!-- cols rows textarea 크기 설정 -->
+    	<button>회원 가입</button>
+    </form>
+    
 </body>
 </html>

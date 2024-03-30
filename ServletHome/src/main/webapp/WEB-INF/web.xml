@@ -20,4 +20,30 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- ExampleController1 을 Servlet 으로 등록하고 -->
+  <!-- ExampleController1 클래스가 example1 이라는 요청을 받을 수 있게 매핑해주는 거 -->
+  <!-- Servlet 태그 : 특정 클래스를 Servlet 으로 등록하고 이름을 지정하는 태그 -->
+  <servlet>
+  	<!-- ExampleController1 을 Servlet 으로 등록하고 이름 지정해줄 거 -->
+  	<!-- 등록할 Servlet 을 지칭할 명칭(별칭, 별명) 만들어 줄 거 -->
+  	<servlet-name>ex1</servlet-name>
+  	<!-- Servlet 의 이름 정해준 거 ex1이라고 불릴 Servlet 을 servlet-class 에 지정해주는 거 -->
+  	
+  	<!-- Servlet 으로 등록할 클래스의 패키지명+클래스명 -->
+  	<servlet-class>home.practice.servlet.controller.ExampleController1</servlet-class>
+  	<!-- servlet-class 를 servlet-name 으로 짧게 줄여서 부르겠다 -->
+  	<!-- Controller 를 servlet 으로 등록은 해놓음 /example1 을 매핑 시켜줘야함 -->
+  </servlet>
+  
+  <!-- 요청 주소를 처리할 Servlet 을 연결할 거(매핑) -->
+  <servlet-mapping>
+  	<!-- 요청 주소랑 이름을 연결해줘야함 -->
+  	<!-- 등록할 Servlet 을 지칭할 명칭 -->
+  	<servlet-name>ex1</servlet-name>
+  	
+  	<!-- 연결할 요청 주소를 작성해주면 됨 -->
+  	<url-pattern>/example1</url-pattern>
+  	<!-- 클라이언트에서 보낸 요청 주소 써주면 됨 -->
+  </servlet-mapping>
 </web-app>
