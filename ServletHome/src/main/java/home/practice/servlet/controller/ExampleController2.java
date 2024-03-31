@@ -95,5 +95,7 @@ public class ExampleController2 extends HttpServlet{ // servlet 이용하기 위
 		// => 작성해준 경로의 jsp 로 위임을 하겠다 req 데이터를 담아서
 		dispatcher.forward(req, resp);
 		// 요청 정보 받은 걸로 화면 만들어서 가지고 돌아와라
+		// 요청이 왔을 때 JSP 에게 요청을 위임하는 거 forward
+		// result.jsp 가 받은 요청 주소도 /signup 이 뜨는 게 forward
 	}
 }
