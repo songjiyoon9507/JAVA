@@ -1,44 +1,43 @@
 package baekjoon;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = sc.nextInt();
+		int m = sc.nextInt();
 		
-		// 입력 받을 단어 개수
-		int num = Integer.parseInt(br.readLine());
+		int a[][] = new int [n][m];
+		int b[][] = new int [n][m];
 		
-		// 그룹 단어가 아닐 경우 -1
-		int count = num;
+		int sum[][] = new int[n][m];
 		
-
-		for(int i = 0 ; i < num ; i++) {
-			
-			// num번 단어 입력 받을 곳
-			String str = br.readLine();
-			
-			// 알파벳 배열 길이만큼의 배열을 만들어서 boolean으로 체크된 적이 있는 문자인지 확인
-			boolean check[] = new boolean[26];
-			
-			// j와 j+1 을 비교해야해서 str.length()로 str 길이 초과됨.
-			for(int j = 0 ; j < str.length() - 1 ; j++) {
-				// 입력 받은 문자를 check해서 true로 바꿔줌 뒤에 걸리는 문자로 그룹 단어 확인
-				check[str.charAt(j)-97] = true;
-				
-				// j와 j+1 문자가 같지 않고 j+1이 이미 체크된 알파벳(true)이면 그룹 단어가 아님 count - 1 
-				if( (str.charAt(j) != str.charAt(j+1)) && (check[str.charAt(j+1)-97] == true) ) {
-					count--;
-					// for 문이 더 도는 걸 막음
-					break;
-				}
-				
+		for(int i = 0 ; i < n ; i++) {
+			for(int j = 0 ; j < m ; j++) {
+				a[i][j] = sc.nextInt();
 			}
 		}
-		System.out.println(count);
-		br.close();
+		
+		for(int i = 0 ; i < n ; i++) {
+			for(int j = 0 ; j < m ; j++) {
+				b[i][j] = sc.nextInt();
+			}
+		}
+		
+		for(int i = 0 ; i < n ; i++) {
+			for(int j = 0 ; j < m ; j++) {
+				sum[i][j] = a[i][j] + b[i][j];
+			}
+		}
+		
+		for(int i = 0 ; i < n ; i++) {
+			for(int j = 0 ; j < m ; j++) {
+				System.out.print(sum[i][j] + " ");
+			}
+			System.out.println();
+		}
+		sc.close();
 	}
 }
