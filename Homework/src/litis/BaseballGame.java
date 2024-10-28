@@ -22,6 +22,12 @@ public class BaseballGame {
 			String input = sc.next();
 			sc.nextLine();
 			
+			// 제대로된 문자를 입력하지 않았을 경우에 대한 처리
+            if (!input.equals("가위") && !input.equals("바위") && !input.equals("보")) {
+                System.out.println("가위, 바위, 보만 입력 가능합니다.");
+                continue;
+            }
+			
 			int random = (int)(Math.random() * 3 + 1); // 1 2 3
 			
 			String com = null;
